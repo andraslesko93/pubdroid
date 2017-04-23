@@ -1,0 +1,159 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Pubs API
+  description: Pubs API
+  version: "1.0.0"
+# the domain of the service
+host: api.uber.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /pubs:
+    get:
+      summary: Get pubs list
+      tags:
+        - Pubs
+      responses:
+        200:
+          description: List of all pubs
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Pub'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /pubs/{distance}:
+    get:
+      summary: Get pubs by distance from the current position
+      parameters:
+        - name: distance
+          in: path
+          description: Passing the distance.
+          required: true
+          type: number
+          format: double
+      tags:
+        - Pubs
+      responses:
+        200:
+          description: List of all pubs in a certain distance.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Pub'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'  
+  /pub/{id}:
+    get:
+      summary: Get details for a certain pub
+      parameters:
+        - name: id
+          in: path
+          description: Passing the Id of the pub
+          required: true
+          type: number
+          format: int
+      tags:
+        - Pubs
+      responses:
+        200:
+          description: A certain pub
+          schema:
+              $ref: '#/definitions/Pub'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /pub/create:
+    post:
+      summary: Create a pub
+      parameters:
+        - name: pub
+          in: body
+          description: Creates a pub and adds to database.
+          required: true
+          schema:
+              $ref: '#/definitions/Pub'
+      tags:
+        - Pubs
+      responses:
+        200:
+          description: An array of products
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /login:
+    post:
+      summary: Sends login credentials.
+      parameters:
+        - name: credentials
+          in: body
+          description: Credentials of user
+          required: true
+          schema:
+            $ref: '#/definitions/Credentials'
+      tags:
+        - Login
+      responses:
+        200:
+          description: Successful login.
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Pub:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier.
+      name:
+        type: string
+        description: The name of the pub.
+      feeling:
+        type: string
+        description: Feeling of the pub.
+      beer_price:
+        type: integer
+        format: int32
+        description: The price of the cheapest beer in HUF.
+      longitude:
+        type: number
+        format: double
+        description: Logitude coordinate.
+      latitude:
+        type: number
+        format: double
+        description: Latitude coordinate.  
+  Credentials:
+    type: object
+    properties:
+      user:
+        type: string
+        description: Username
+      password:
+        type: string
+        description: Password
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

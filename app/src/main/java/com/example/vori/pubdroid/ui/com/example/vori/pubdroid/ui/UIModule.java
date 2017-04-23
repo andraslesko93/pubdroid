@@ -9,12 +9,16 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.greenrobot.event.EventBus;
 
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.listPubs.ListPubsPresenter;
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.login.LoginPresenter;
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.main.MainPresenter;
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.pubCreate.PubCreatePresenter;
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.pubDetails.PubDetailsPresenter;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Module
 public class UIModule {
@@ -56,5 +60,17 @@ public class UIModule {
     @Singleton
     public PubCreatePresenter providePubCreatePresenter() {
         return new PubCreatePresenter();
+    }
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    public Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 }
