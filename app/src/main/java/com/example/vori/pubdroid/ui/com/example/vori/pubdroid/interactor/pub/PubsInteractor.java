@@ -24,12 +24,14 @@ public class PubsInteractor {
     @Inject
     EventBus bus;
 
+
+
     public PubsInteractor() {
         PubDroidApplication.injector.inject(this);
     }
 
 
-    public void getEvents() {
+    public void getPubs() {
         GetPubsEvent event = new GetPubsEvent();
         try {
             List<Pub> pubs = repository.getAllPubs();
@@ -41,7 +43,7 @@ public class PubsInteractor {
         }
     }
 
-    public void getEvent(Long id) {
+    public void getPub(Long id) {
         GetPubEvent event = new GetPubEvent();
         try {
             Pub pub = repository.getPub(id);
@@ -53,7 +55,7 @@ public class PubsInteractor {
         }
     }
 
-    public void saveEvent(Pub pub) {
+    public void savePub(Pub pub) {
 
         SavePubEvent event = new SavePubEvent();
         event.setPub(pub);
@@ -66,7 +68,7 @@ public class PubsInteractor {
         }
     }
 
-    public void updateEvent(Pub pub) {
+    public void updatePub(Pub pub) {
         try {
             repository.update(pub);
         } catch (Exception e) {
@@ -74,7 +76,7 @@ public class PubsInteractor {
         }
     }
 
-    public void removeEvent(Pub pub) {
+    public void removePub(Pub pub) {
         RemovePubEvent event = new RemovePubEvent();
         event.setPub(pub);
         try {

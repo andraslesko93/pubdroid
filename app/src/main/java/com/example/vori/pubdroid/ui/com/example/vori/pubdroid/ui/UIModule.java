@@ -12,8 +12,6 @@ import dagger.Provides;
 import de.greenrobot.event.EventBus;
 
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.listPubs.ListPubsPresenter;
-import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.login.LoginPresenter;
-import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.main.MainPresenter;
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.pubCreate.PubCreatePresenter;
 import com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.pubDetails.PubDetailsPresenter;
 
@@ -33,17 +31,6 @@ public class UIModule {
         return context;
     }
 
-    @Provides
-    @Singleton
-    public MainPresenter provideMainPresenter() {
-        return new MainPresenter();
-    }
-
-    @Provides
-    @Singleton
-    public LoginPresenter provideLoginPresenter() {
-        return new LoginPresenter();
-    }
     @Provides
     @Singleton
     public ListPubsPresenter provideListPubsPresenter() {

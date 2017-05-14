@@ -55,8 +55,6 @@ public class SugarOrmRepository implements Repository {
         pubToUpdate.setName(pub.getName());
         pubToUpdate.setFeeling(pub.getFeeling());
         pubToUpdate.setBeerPrice(pub.getBeerPrice());
-        pubToUpdate.setLongitude(pub.getLongitude());
-        pubToUpdate.setLatitude(pub.getLatitude());
 
         SugarRecord.saveInTx(pubToUpdate);
     }

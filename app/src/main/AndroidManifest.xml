@@ -11,14 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.com.example.vori.pubdroid.ui.main.MainActivity">
+
+        </activity>
+        <activity android:name=".ui.com.example.vori.pubdroid.ui.login.LoginActivity" />
+        <activity android:name=".ui.com.example.vori.pubdroid.ui.listPubs.ListPubsActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.com.example.vori.pubdroid.ui.login.LoginActivity" />
-        <activity android:name=".ui.com.example.vori.pubdroid.ui.listPubs.ListPubsActivity" />
         <activity android:name=".ui.com.example.vori.pubdroid.ui.pubDetails.PubDetailsActivity" />
         <activity android:name=".ui.com.example.vori.pubdroid.ui.pubCreate.PubCreateActivity" />
 

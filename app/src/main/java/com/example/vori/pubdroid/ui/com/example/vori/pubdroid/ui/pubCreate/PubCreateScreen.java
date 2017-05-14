@@ -7,4 +7,5 @@ package com.example.vori.pubdroid.ui.com.example.vori.pubdroid.ui.pubCreate;
 public interface PubCreateScreen {
     void showMessage(String text);
     void navigateToMain();
+    void setCreatePubButton();
 }

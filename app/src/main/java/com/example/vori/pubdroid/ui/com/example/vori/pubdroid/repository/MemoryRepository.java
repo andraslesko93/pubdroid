@@ -19,8 +19,8 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        Pub pub1 = new Pub((long)1, "akacfa", "kesdobalo", 300, 47.499232, 19.066604);
-        Pub pub2 = new Pub((long)1, "andersen", "beszelgetos", 290, 47.490406, 19.069850);
+        Pub pub1 = new Pub((long)1, "akacfa", "kesdobalo", 300);
+        Pub pub2 = new Pub((long)1, "andersen", "beszelgetos", 350);
 
         pubs = new ArrayList<>();
         pubs.add(pub1);
